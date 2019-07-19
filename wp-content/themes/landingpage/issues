@@ -1,0 +1,25 @@
+function lanp_setup (){
+
+	//Menu de navegacion 
+	register_nav_menus ( array ('primary menu' => esc_html('primary menu' , 'landingpage')));
+}
+
+add_action ('after_setup_theme', 'lanp_setup');
+
+
+
+/*Agregar Clases de Bootstrap para el menu*/
+
+function lanp_enlace_class ($atts, $item, $args){
+	
+	if($args->theme_location == 'primary menu'){
+		$atts['class'] = 'nav-link';
+	}
+		
+}
+return $atts ; 
+
+add_filter('$nav_menu_link_attributes', 'lanp_enlace_class', 10 , 3);
+
+<?php while(have_post()):the_post(); ?>
+<?php while(have_posts()): the_post(); ?>
